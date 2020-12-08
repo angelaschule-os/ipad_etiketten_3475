@@ -1,0 +1,43 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+% apt-get install texlive-lang-german
+\usepackage[ngerman]{babel}
+% apt-get install texlive-fonts-extra
+\usepackage{csvsimple}
+\usepackage{pst-barcode,pstricks-add}
+\usepackage{auto-pst-pdf}
+\usepackage[newdimens]{labels}
+\renewcommand{\familydefault}{\sfdefault}
+\LabelCols=3
+\LabelRows=8
+%\LeftBorder=5mm
+%\RightBorder=5mm
+%\TopBorder=0.5mm
+%\BottomBorder=0.5mm
+\LeftPageMargin=0mm
+\RightPageMargin=0mm
+\TopPageMargin=4mm
+\BottomPageMargin=4mm
+\InterLabelColumn=0mm%% Gap between columns
+\InterLabelRow=0mm%% Gap between rows
+\LeftLabelBorder=2em
+\RightLabelBorder=2em
+\TopLabelBorder=0pt
+\BottomLabelBorder=0pt
+\LabelInfotrue
+%\LabelGridtrue
+\LabelSetup
+
+\newcommand{\Etikett}[2]{%
+    \addresslabel{#1\\ #2}}%
+\begin{document}
+\csvreader[head to column names]{ausleih_ipads.csv}{}{%
+    \Etikett{11/2020}{
+ \psset{unit=1in}
+    \begin{pspicture}(3.5,1.2)
+        \psbarcode{\SERIAL}{includetext}{code128}
+    \end{pspicture}
+}
+}
+
+\end{document}
