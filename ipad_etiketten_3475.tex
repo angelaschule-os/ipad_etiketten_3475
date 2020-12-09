@@ -33,9 +33,8 @@
 \begin{document}
 \csvreader[head to column names]{ausleih_ipads.csv}{}{%
     \Etikett{11/2020}{
- \psset{unit=1in}
-    \begin{pspicture}(3.5,1.2)
-        \psbarcode{\SERIAL}{includetext}{code128}
+    \begin{pspicture}
+        \psbarcode{\SERIAL}{width=2 height=0.6 guardwhitespace includetext}{code128}
     \end{pspicture}
 }
 }
